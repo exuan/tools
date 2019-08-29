@@ -615,8 +615,12 @@ RUN if [ ${INSTALL_ADDITIONAL_LOCALES} = true ]; then \
 ;fi
 
 ###########################################################################
-# yaf yar:
+# yaf yar sockets
 ###########################################################################
+USER root
+
+RUN docker-php-ext-install sockets
+
 RUN rm -rf /var/lib/apt/lists/* \
   && apt-get update -yqq \
   && apt-get -y install libcurl4-openssl-dev \
